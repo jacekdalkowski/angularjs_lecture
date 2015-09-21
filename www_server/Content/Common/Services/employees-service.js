@@ -3,8 +3,12 @@ angular.module('servicesModule')
 	
 	return {
 		
-		getEmployeesList: function (onSuccess, onError){
-			$http.get(apiUrl + '/api/employees')
+		getEmployeesList: function (surnamePattern, onSuccess, onError){
+			var requestUrl = apiUrl + '/api/employees/';
+			if(surnamePattern){
+				requestUrl = requestUrl + '?surname=' + surnamePattern;
+			}
+			$http.get(requestUrl)
 			.then(onSuccess, onError);
 		},
 		
@@ -14,12 +18,12 @@ angular.module('servicesModule')
 		},
 		
 		addEmployee: function (employeeData, onSuccess, onError){
-			$http.post(apiUrl + '/api/employees', employeeData)
+			$http.post(apiUrl + '/api/employees/', employeeData)
 			.then(onSuccess, onError);
 		},
 		
 		updateEmployee: function (employeeData, onSuccess, onError){
-			$http.put(apiUrl + '/api/employees', employeeData)
+			$http.put(apiUrl + '/api/employees/', employeeData)
 			.then(onSuccess, onError);
 		},
 		

@@ -4,10 +4,10 @@ angular.module('viewsModule')
 	var template = 
 		'<div class="employees-nav-menu">' +
 			'<div class="employees-nav-menu-btn-wrapper">' +
-				'<a ng-click="events.onAddClick($event)" href="#" type="button" class="btn btn-default btn-block">Add</a>' +
+				'<a ng-click="events.onAddClick($event)" href="#" type="button" class="btn btn-default btn-block">Dodaj</a>' +
 			'</div>' +
 			'<div class="employees-nav-menu-btn-wrapper">' +
-				'<a ng-click="events.onListClick($event)" href="#" type="button" class="btn btn-default btn-block">List</a>' +
+				'<a ng-click="events.onListClick($event)" href="#" type="button" class="btn btn-default btn-block">Lista</a>' +
 			'</div>' +
 		'</div>';
 	
