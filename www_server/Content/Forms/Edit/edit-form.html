@@ -1,31 +1,59 @@
 <div>
-	<form name="employeeForm">
+	<div>{{'#' + model.employee.id}}</div>
+	<form name="employeeForm" novalidate>
 		<div class="row">
-			<div class="form-group col-md-6">
+			<div class="form-group col-md-10">
 				<label>Nazwisko</label>
 				<br />
-				<input type="text" ng-model="model.employee.surname"></input>
+				<input name="surname" type="text" ng-model="model.employee.surname" required=""></input>
+				<span class="error-msg" ng-show="(model.submitted || employeeForm.surname.$touched) && employeeForm.surname.$invalid">
+					Proszę wprowadzić nazwisko!
+				</span>
 			</div>
 		</div>
 		<div class="row">
-			<div class="form-group col-md-6">
-				<label>Nazwisko</label>
+			<div class="form-group col-md-10">
+				<label>Stanowisko</label>
 				<br />
-				<select ng-model="model.employee.position">
+				<select name="position" ng-model="model.employee.position" required="">
 					<option ng-value="ASSISTANT">ASSISTANT</option>
 					<option ng-value="PROFESSOR">PROFESSOR</option>
 				</select>
+				<span class="error-msg" ng-show="(model.submitted || employeeForm.position.$touched) && employeeForm.position.$invalid">
+					Proszę wybrać stanowisko!
+				</span>
 			</div>
 		</div>
 		<div class="row">
-			<div class="form-group col-md-6">
+			<div class="form-group col-md-10">
 				<label>Pensja</label>
 				<br />
-				<input type="text" ng-model="model.employee.salary"></input>
+				<input name="salary" type="text" ng-model="model.employee.salary" salary required></input>
+				<span class="error-msg" ng-show="(model.submitted || employeeForm.salary.$touched) && employeeForm.salary.$error.salary">
+					Proszę wprowadzić kwotę w odpowiednim formacie!
+				</span>
+				<span class="error-msg" ng-show="(model.submitted || employeeForm.salary.$touched) && employeeForm.salary.$error.required">
+					Proszę wprowadzić kwotę!
+				</span>
+			</div>
+		</div>
+		<div class="row" ng-if="model.employee.position === 'PROFESSOR'">
+			<div class="form-group col-md-10">
+				<label>Premia</label>
+				<br />
+				<input name="bonus" type="text" ng-model="model.employee.bonus" salary required></input>
+				<span class="error-msg" ng-show="(model.submitted || employeeForm.bonus.$touched) && employeeForm.bonus.$error.salary">
+					Proszę wprowadzić kwotę w odpowiednim formacie!
+				</span>
+				<span class="error-msg" ng-show="(model.submitted || employeeForm.bonus.$touched) && employeeForm.bonus.$error.required">
+					Proszę wprowadzić kwotę!
+				</span>
 			</div>
 		</div>
 		<div class="row">
-			<button class="btn btn-default" ng-click="events.onSave($event)">Zapisz</button>
+			<div class="col-md-offset-1">
+				<button class="btn btn-default" ng-click="events.onSave($event)">Zapisz</button>
+			</div>
 		</div>
 	</form>
 </div>

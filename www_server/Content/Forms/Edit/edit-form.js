@@ -9,12 +9,20 @@ angular.module('viewsModule')
 			var employeeId = getQueryParam('employeeId');
 			
 			scope.model = {
-				employee: {}
+				employee: {},
+				submitted: false
 			};
 			
 			scope.events = {
 				onSave: function(event){
 					var action;
+					
+					scope.model.submitted = true;
+					if(scope.employeeForm.$invalid){
+						alert('Proszę wprowadzić poprawki!');
+						return;
+					}
+					
 					if(scope.model.employee.id){
 						action = employeesService.updateEmployee;
 					}else{
@@ -22,13 +30,13 @@ angular.module('viewsModule')
 					}
 					
 					action(scope.model.employee,
-					function onSuccess(data){
-						alert('Pomyślnie zapisano zmiany');
-					},
-					function onError(){
-						alert('Wystąpił błąd');
-					});
-				}	
+						function onSuccess(data){
+							alert('Pomyślnie zapisano zmiany');
+						},
+						function onError(){
+							alert('Wystąpił błąd');
+						});
+					}	
 			};
 			
 			if(employeeId){
