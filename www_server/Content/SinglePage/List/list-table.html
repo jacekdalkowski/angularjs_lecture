@@ -1,0 +1,50 @@
+<div>
+	<div class="row text-align-center">
+		<h1 class="employees-header">Pracownicy</h1>
+	</div>
+	<div class="row text-align-center">
+		<h4 class="update-header">Aktualizacja: {{model.lastUpdate | date:'yyyy-MM-dd HH:mm:ss'}}</h4>
+	</div>
+	<div class="row employees-table-row">
+		<div class="col-md-offset-6 col-md-6">
+			<div class="row">
+				<div class="col-md-4">
+					<label class="surname-filter-label">Nazwisko:</label>
+				</div>
+				<div class="col-md-8">
+					<input class="form-control" 
+						type="text" 
+						ng-model="model.filters.surname"
+						ng-model-options="{ debounce: 1000 }"
+						ng-change="events.onSurnameFilterChange($event)" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<td>#</td>
+					<td>Nazwisko</td>
+					<td>Stanowisko</td>
+					<td>Pensja</td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="employee in model.employees">
+					<td>{{employee.id}}</td>
+					<td>{{employee.surname}}</td>
+					<td>{{employee.position}}</td>
+					<td>{{employee.salary | currency}}</td>
+					<td>
+						<button class="btn btn-default" ng-click="events.onEdit($event, employee.id)">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

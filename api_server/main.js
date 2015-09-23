@@ -7,7 +7,7 @@ var cassandra = require('cassandra-driver');
 var tokenSecret = '1234567890';
 
 http.createServer(function (req, res) {
-	console.log('Got request for: ' + req.url);
+	console.log('Got request for: ' + req.url + ', authorization header: ' + (req.headers.authorization ? req.headers.authorization : 'none'));
 	res.setHeader('Access-Control-Allow-Origin', '*');
 	
 	if (req.method === 'OPTIONS') {
@@ -19,7 +19,7 @@ http.createServer(function (req, res) {
 		headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
 		headers["Access-Control-Allow-Credentials"] = false;
 		headers["Access-Control-Max-Age"] = '86400'; // 24 hours
-		headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept";
+		headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Authorization";
 		res.writeHead(200, headers);
 		res.end();
 		return;

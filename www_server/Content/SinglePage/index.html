@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Angular forms</title>
+	<title>Angular single page app</title>
 	
 	<!-- angular -->
 	<script src="/Common/angular.1.4.6.min.js"></script>
+	<script src="/Common/angular-route.1.4.6.min.js"></script>
 	
 	<!-- jQuery -->
 	<script src="/Common/jquery-2.1.4.min.js"></script>
@@ -20,8 +21,11 @@
 	<!-- angular modules -->
 	<script src="/Common/Services/services-module.js"></script>
 	<script src="/Common/Services/employees-service.js"></script>
-	<script src="/Forms/views-module.js"></script>
-  	<script src="/Forms/Common/menu.js"></script>
+	<script src="/SinglePage/views-module.js"></script>
+	<script src="/SinglePage/Common/token-manager.js"></script>
+  	<script src="/SinglePage/Common/menu.js"></script>
+	<script src="/SinglePage/Edit/edit-form.js"></script>
+	<script src="/SinglePage/List/list-table.js"></script>
   
 </head>
 
@@ -30,7 +34,7 @@
 		<div class="col-md-2">
 			<menu></menu>
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-8" ng-view>
 			
 		</div>
 	</div>

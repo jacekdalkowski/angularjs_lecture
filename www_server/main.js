@@ -7,7 +7,7 @@ var ext = require('./Content/Common/ext.js');
 var tokenSecret = '1234567890';
 
 http.createServer(function (req, res) {
-	console.log('Got request.');
+	console.log('Got request for: ' + req.url + ', authorization header: ' + (req.headers.authorization ? req.headers.authorization : 'none'));
 	if(!req.url){
 		return res.writeHead(400);
 	}
