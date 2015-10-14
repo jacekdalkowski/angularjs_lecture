@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Angular forms</title>
+	<title>Angular single page app</title>
 	
 	<!-- angular -->
 	<script src="/Common/angular.1.4.6.min.js"></script>
+	<script src="/Common/angular-route.1.4.6.min.js"></script>
 	
 	<!-- jQuery -->
 	<script src="/Common/jquery-2.1.4.min.js"></script>
@@ -15,24 +16,24 @@
 	<script src="/Common/Bootstrap/js/bootstrap.js"></script>
 	
 	<!-- styles -->
-	<link rel="stylesheet" href="/Forms/List/list.css">
+	<link rel="stylesheet" href="/Scopes/scopes.css">
 	
 	<!-- angular modules -->
-	<script src="/Common/Services/services-module.js"></script>
-	<script src="/Common/Services/employees-service.js"></script>
-	<script src="/Forms/views-module.js"></script>
-  	<script src="/Forms/Common/menu.js"></script>
-	<script src="/Forms/List/list-table.js"></script>
+	<script src="/Scopes/views-module.js"></script>
+	<script src="/Scopes/grand-parent.js"></script>
+  	<script src="/Scopes/parent.js"></script>
+	<script src="/Scopes/child.js"></script>
   
 </head>
 
 <body ng-app="viewsModule">
 	<div class="container-fluid">
-		<div class="col-md-2">
-			<menu data-asdas="{}"></menu>
-		</div>
-		<div class="col-md-8">
-			<list-table></list-table>
+		<div class="col-md-12">
+			<div grand-parent>
+				<parent grand-parent-model="model">
+					<child parent-model="model"></child>
+				</parent>
+			</div>
 		</div>
 	</div>
 </body>

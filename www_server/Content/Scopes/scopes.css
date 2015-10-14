@@ -1,0 +1,5 @@
+.grand-parent-class, .parent-class, .child-class{
+	border: 1px solid red;
+	padding: 15px;
+	margin-top: 20px;
+}
